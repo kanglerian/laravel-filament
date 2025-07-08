@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('email');
             $table->string('name');
             $table->string('phone');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }

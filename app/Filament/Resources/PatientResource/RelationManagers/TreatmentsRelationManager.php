@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -41,7 +42,13 @@ class TreatmentsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('description')
             ->columns([
-                Tables\Columns\TextColumn::make('description'),
+                TextColumn::make('description'),
+                TextColumn::make('price')
+                    ->money('IDR', true)
+                    ->label('Price'),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->label('Created At'),
             ])
             ->filters([
                 //
